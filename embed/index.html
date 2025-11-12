@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Pattern Logic — Embed</title>
+  <style>
+    /* Layout: clean, no overlay; Canva controls size via iframe */
+    html,body{margin:0;height:100%;background:#ffffff;font:14px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    #root{min-height:100%;display:flex;flex-direction:column}
+    .bar{
+      position:relative; z-index:1;
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+      padding:10px; border-bottom:1px solid #eee; background:#fafafa;
+    }
+    input,button{
+      padding:8px 10px; border:1px solid #ddd; border-radius:8px; background:#fff; cursor:pointer
+    }
+    input{min-width:240px}
+    button:hover{border-color:#cfd2d4}
+    #canvasWrap{flex:1; display:flex; align-items:center; justify-content:center; padding:10px; box-sizing:border-box}
+    canvas{display:block}
+    .hint{color:#666}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- Controls sit ABOVE the canvas; they won't cover anything -->
+    <div class="bar">
+      <input id="textIn" placeholder="Type (e.g., ADA, AGC) and press Enter" />
+      <button id="presetAda" title="Ada Lovelace">ADA</button>
+      <button id="presetAGC" title="Apollo Guidance Computer">AGC</button>
+      <button id="repeatBtn" title="Duplicate current pattern to the right">Repeat →</button>
+      <button id="clearBtn">Clear</button>
+      <span class="hint">Shortcuts: S = save PNG · J = save JSON</span>
+    </div>
+
+    <!-- Canvas container (p5 sketch attaches here) -->
+    <div id="canvasWrap" aria-label="Interactive punch-card grid with woven preview"></div>
+  </div>
+
+  <script src="./sketch.js"></script>
+</body>
+</html>
+
